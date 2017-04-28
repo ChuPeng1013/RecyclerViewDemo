@@ -1,11 +1,12 @@
 package com.example.administrator.recyclerview;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.List;
 
 /**
@@ -14,16 +15,15 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder>
 {
-
-    private Context context;
     private List<User> userList;
+    private String orientation;
     private ItemClickListener itemClickListener;
 
-    public RecyclerViewAdapter(Context context, List<User> userList)
+    public RecyclerViewAdapter(List<User> userList, String orientation)
     {
         super();
-        this.context = context;
         this.userList = userList;
+        this.orientation = orientation;
     }
 
     public void setItemClickListener(ItemClickListener itemClickListener)
@@ -38,15 +38,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)
     {
-        View view = View.inflate(viewGroup.getContext(), R.layout.recyclerview_item, null);
-        //创建一个ViewHolder
-        RecyclerViewHolder viewHolder = new RecyclerViewHolder(view)
+        View view;
+        if("vertical".equals(orientation))
         {
-            public String toString()
-            {
-                return super.toString();
-            }
-        };
+            view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recyclerview_item_vertical, null);
+        }
+        else
+        {
+            view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recyclerview_item_horizontal, null);
+        }
+        //创建一个ViewHolder
+        RecyclerViewHolder viewHolder = new RecyclerViewHolder(view);
         return viewHolder;
     }
 
