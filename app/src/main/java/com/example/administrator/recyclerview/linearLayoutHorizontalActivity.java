@@ -33,7 +33,7 @@ public class linearLayoutHorizontalActivity extends Activity
         removeButton = (Button) findViewById(R.id.remove);
         //创建一个线性布局管理器
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        //设置滚动方向为竖直方向，如果不设置默认为竖直方向
+        //设置滚动方向为水平方向，如果不设置默认为竖直方向
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         //设置布局管理器
         recyclerView.setLayoutManager(layoutManager);
