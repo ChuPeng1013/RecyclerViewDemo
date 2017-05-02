@@ -26,6 +26,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.orientation = orientation;
     }
 
+    //设置回调
     public void setItemClickListener(ItemClickListener itemClickListener)
     {
         this.itemClickListener = itemClickListener;
@@ -62,6 +63,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         {
             public void onClick(View v)
             {
+                //如果设置了回调，则设置点击事件
                 if(itemClickListener != null)
                 {
                     itemClickListener.onItemSubViewClick(holder.imageName, position);
@@ -85,6 +87,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             {
                 public void onClick(View v)
                 {
+                    //如果设置了回调，则设置点击事件
                     if(itemClickListener != null)
                     {
                         itemClickListener.onItemClick(itemView, getPosition());
@@ -96,6 +99,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             {
                 public boolean onLongClick(View v)
                 {
+                    //如果设置了回调，则设置点击事件
                     if(itemClickListener != null)
                     {
                         itemClickListener.onItemLongClick(itemView, getPosition());
